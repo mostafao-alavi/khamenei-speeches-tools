@@ -1,5 +1,5 @@
-# ⚙️ Khamenei Speeches Engine & Scraping Tools
-### High-Performance Crawling, WAF Bypass, Deduplication Audit & Pipeline Tools / ابزارها و موتور استخراج، ممیزی و پالایش متون
+# ⚙️ Ayatollah Khamenei Speeches Pipeline & Scraping Engine
+### Production-Grade Crawling, WAF / CDN Bypass, Deduplication Auditing & Dataset Generation Suite
 
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![WAF: Chrome_Bypass](https://img.shields.io/badge/WAF_Bypass-curl__cffi-brightgreen.svg)](https://github.com/mostafao-alavi/khamenei-speeches-tools)
@@ -7,66 +7,48 @@
 
 ---
 
-## 🌐 Ecosystem Repositories / ریپازیتوری‌های سه‌گانه پروژه
-| Repository | Description | Link |
-| :--- | :--- | :--- |
-| 📂 **`khamenei-speeches-data`** | آرشیو درختی متن کامل سخنرانی‌ها به تفکیک سال و ماه (Markdown & PDF) | [مشاهده ریپو](https://github.com/mostafao-alavi/khamenei-speeches-data) |
-| 📊 **`khamenei-speeches-datasets`** | دیتاست‌های آماده هوش مصنوعی و تحلیل داده (Parquet, JSONL, SQLite FTS5) | [مشاهده ریپو](https://github.com/mostafao-alavi/khamenei-speeches-datasets) |
-| ⚙️ **`khamenei-speeches-tools`** | ابزارها و کدهای خزشگر هوشمند، ممیزی، حذف تکراری‌ها و خط لوله استخراج | [مشاهده ریپو](https://github.com/mostafao-alavi/khamenei-speeches-tools) |
+## 🌐 Project Ecosystem / اکوسیستم مخازن سه‌گانه
+| Repository | Role | Content | Link |
+| :--- | :--- | :--- | :--- |
+| 📂 **`khamenei-speeches-data`** | **Primary Source Archive** | آرشیو درختی متن کامل سخنرانی‌ها به تفکیک سال و ماه (Markdown, JSON, HTML, PDF) | [GitHub](https://github.com/mostafao-alavi/khamenei-speeches-data) |
+| 📊 **`khamenei-speeches-datasets`** | **AI & Analytics Datasets** | دیتاست‌های تجمیعی هوش مصنوعی (Parquet, JSONL, SQLite FTS5) برای RAG و LLM | [GitHub](https://github.com/mostafao-alavi/khamenei-speeches-datasets) |
+| ⚙️ **`khamenei-speeches-tools`** | **Engineering & Crawler** | موتور دانلودر ضد مسدودی، ممیزی داده‌ها، و خط لوله استخراج و پاکسازی | [GitHub](https://github.com/mostafao-alavi/khamenei-speeches-tools) |
 
 ---
 
-## 🌍 Multilingual Navigation
-- [🇮🇷 فارسی (Persian)](#فارسی)
-- [🇬🇧 English](#english)
-- [🇸🇦 العربية (Arabic)](#العربية)
-- [🇨🇳 中文 (Chinese)](#中文)
-- [🇫🇷 Français (French)](#français)
-- [🇹🇷 Türkçe (Turkish)](#türkçe)
-- [🇷🇺 Русский (Russian)](#русский)
+## 🌍 Complete Multilingual Documentation / مستندات کامل چندزبانه
+برای مشاهده راهنمای مهندسی به سایر زبان‌ها، پیوندهای زیر را ببینید:
+- 🇮🇷 **[فارسی (Persian)](docs/README.fa.md)** - مستندات کامل معماری و اجرای ابزارها
+- 🇬🇧 **[English (Default)](docs/README.en.md)** - Full Engineering & Pipeline Documentation
+- 🇸🇦 **[العربية (Arabic)](docs/README.ar.md)** - التوثيق الهندسي لأدوات الاستخراج
+- 🇨🇳 **[中文 (Chinese)](docs/README.zh.md)** - 爬虫引擎与数据处理工具链技术文档
+- 🇫🇷 **[Français (French)](docs/README.fr.md)** - Documentation Technique du Pipeline de Collecte
+- 🇹🇷 **[Türkçe (Turkish)](docs/README.tr.md)** - Kazıma Motoru ve Veri Boru Hattı Kılavuzu
+- 🇷🇺 **[Русский (Russian)](docs/README.ru.md)** - Техническая Документация Пайплайна Сбора Данных
 
 ---
 
-<a name="فارسی"></a>
-## 🇮🇷 فارسی
-### درباره این ابزارها
-این مخزن شامل کدهای منبع پایتون، خط لوله دانلود، موتور دور زدن فایروال و سیستم هوشمند ممیزی و حذف داده‌های تکراری و غیرکامل برای استخراج آرشیو بیانات است.
+## 🛠️ Architecture & Pipeline Overview
 
-### ساختار اسکریپت‌ها (`src/`)
-- `speech_crawler.py`: خزشگر خودکار شاخص سخنرانی‌ها از سال ۱۳۵۷ تا ۱۴۰۴ با پشتیبانی از صف هوشمند.
-- `download_worker.py`: دانلودر موازی متون، کدهای HTML و اسناد PDF رسمی با نشست شبیه‌ساز Chrome و پشتیبانی از فایروال/WAF.
-- `dedup_audit.py`: موتور ممیزی و غربال‌گری داده‌ها جهت تضمین ذخیره‌سازی **فقط نسخه کامل** و حذف خلاصه‌ها و تحلیل‌ها.
-- `export_github_dataset.py`: تولید خودکار فایل‌های Parquet، JSONL و ساخت جدول جستجوی تمام‌متن FTS5 در دیتابیس SQLite.
-- `sync_worker.py`: پردازشگر خودکار جهت اجرای ترتیبی و افزایشی کل خط لوله.
-
-### نحوه راه‌اندازی و اجرا
-```bash
-# نصب پیش‌نیازها
-pip install -r requirements.txt
-
-# اجرای همگام‌سازی و دانلود
-python src/sync_worker.py
-
-# خروجی‌گیری دیتاست‌ها
-python src/export_github_dataset.py
+```text
+[farsi.khamenei.ir]
+        │
+        ▼ (Chrome TLS Impersonation / WAF Bypass)
+[speech_crawler.py] ──> Discovers 2,291 entries across 1357–1404
+        │
+        ▼ (Parallel Async / Session Jitter)
+[download_worker.py] ──> Saves Markdown, JSON metadata, HTML & PDFs
+        │
+        ▼ (Full-Transcript Strict Auditor)
+[dedup_audit.py] ────> Filters summaries, excerpts, and analyses (yields 1,066 full texts)
+        │
+        ▼ (Multi-Format Exporter)
+[export_github_dataset.py] ──> Generates Parquet, JSONL, and SQLite FTS5
 ```
 
----
-
-<a name="english"></a>
-## 🇬🇧 English
-### Overview
-This repository contains the complete modular Python engine and automated pipeline used to scrape, normalize, audit, deduplicate, and export the comprehensive textual archive of Khamenei speeches.
-
-### Pipeline Components
-- `speech_crawler.py`: Discovers and indexes speech endpoints from 1979 to 2026.
-- `download_worker.py`: Resilient HTTP client powered by `curl_cffi` for TLS fingerprinting and WAF bypass.
-- `dedup_audit.py`: Full-text integrity auditor filtering excerpts, news briefs, and editorial analyses.
-- `export_github_dataset.py`: Exports datasets into Parquet, JSONL, and SQLite FTS5 databases.
-
----
-
-<a name="العربية"></a>
-## 🇸🇦 العربية
-### نظرة عامة
-يحتوي هذا المستودع على محرك بايثون المتكامل والأدوات البرمجية المستخدمة في جمع وتدقيق وتصفية الخطابات وتصديرها بصيغ البيانات القياسية.
+### Installation
+```bash
+git clone https://github.com/mostafao-alavi/khamenei-speeches-tools.git
+cd khamenei-speeches-tools
+pip install -r requirements.txt
+```
